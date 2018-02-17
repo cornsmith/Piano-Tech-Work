@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic Page Needs
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    <title>Piano Technical Work Tool</title>
+    <meta name="description" content="Randomiser for technical work">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link href="//fonts.googleapis.com/css?family=Lato:400,300,600" rel="stylesheet" type="text/css">
+
+    <!-- CSS
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+
+<body>
+    <!-- Primary Page Layout
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container">
+        <button class="" id="work" onclick="pickWork()"></button>
+    </div>
+
+
+    <!-- Scripts
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script>
+        var keys = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        var motions = ['Similar motion', 'Contrary motion', 'Thirds', 'Sixths', 'Double octaves'];
+        var scales = ['major', 'harmonic minor', 'melodic minor', 'chromatic'];
+
+        function pickWork() {
+            // randomly pick key, motion, scale
+            var key = keys[Math.floor(Math.random() * keys.length)];
+            var motion = motions[Math.floor(Math.random() * motions.length)];
+            var scale = scales[Math.floor(Math.random() * scales.length)];
+            
+            // only harmonic minor for contrary motion
+            if (motion == 'Contrary motion' && scale == 'melodic minor') {
+                scale = 'harmonic minor'
+            }
+
+            // output to document
+            document.getElementById("work").innerHTML = motion + '<br><br>' + key + ' ' + scale;
+        };
+        pickWork();
+    </script>
+
+    <!-- End Document
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+</body>
+
+</html>
